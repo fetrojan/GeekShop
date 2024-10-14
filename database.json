@@ -1,0 +1,65 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "name": "Funko Pop Iron Man",
+        "image": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRgp2kPODDWwhRQ7hoIH88rspWvnCB7HdYLiznUlmGc1NHs8v5R8H4oXWHkPJY9zIhoIrRJe5J4U3wAoC-vgovpVsbMTVxnPPIy1nepTqTb8uMdP-kqQyHPhYg_GbemL-XBI3v0WwDB1g&usqp=CAc",
+        "price": 149.99
+      },
+      {
+        "id": 2,
+        "name": "Action Figure Naruto",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS46kLYl82bFOprGRl92n64s4yYVcb3aKABZA&s",
+        "price": 199.99
+      },
+      {
+        "id": 3,
+        "name": "Camiseta Star Wars",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNg3npQsXsRCmqzyGYDa1A7m4La-RXv25fXA&s",
+        "price": 89.99
+      },
+      {
+        "id": 4,
+        "name": "Funko Pop Darth Vader",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQtLqUMctSvPSR3t-6FjEzWngAcp5kvnT4kA&s",
+        "price": 139.99
+      },
+      {
+        "id": 5,
+        "name": "Poster Stranger Things",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxaHIkJFKXsPelFxMrTM9tWcUHhW_ElBmVEg&s",
+        "price": 29.99
+      },
+      {
+        "id": 6,
+        "name": "Action Figure Goku",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXA3vimRhKLKaL8lRxsQbTkK_sUtcMA_e8lg&s",
+        "price": 179.99
+      },
+      {
+        "id": 7,
+        "name": "Caneca Harry Potter",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7Z4Lee0cSqXRclHWiJjkjQv1UcUhPbK-owQ&s",
+        "price": 49.99
+      },
+      {
+        "id": 8,
+        "name": "Camiseta Rick and Morty",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhgUtH04-OhUjmCet-eCs_b6Cig5jEm_ufQw&s",
+        "price": 99.99
+      },
+      {
+        "id": 9,
+        "name": "Funko Pop Batman",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuRG9pKnbJceicLuaTJj65zewRehAcWTyyYA&s",
+        "price": 129.99
+      },
+      {
+        "id": 10,
+        "name": "Poster Marvel Avengers",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMOfG03OstIyK8QuUc9zdEYheUEEX2Lt6Huw&s",
+        "price": 34.99
+      }
+    ]
+  }
+  
