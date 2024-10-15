@@ -4,6 +4,7 @@ export interface Product {
     id: number;
     name: string;
     price: number;
+    image: string;
   }
 
 // Definindo a tipagem para o contexto do carrinho
