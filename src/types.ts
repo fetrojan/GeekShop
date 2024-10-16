@@ -20,3 +20,13 @@ export interface CartContextType {
 export interface CartProviderProps {
     children: ReactNode;
 }
+
+export interface AuthContextType {
+  user: boolean
+  login: (username: string, password: string) => void;
+  logout: () => void
+}
+
+export interface AuthProviderProps {
+  children: ReactNode;
+}

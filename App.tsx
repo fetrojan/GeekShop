@@ -1,4 +1,4 @@
-import { SafeAreaView, StyleSheet, StatusBar, TouchableOpacity, Text } from 'react-native';
+import { SafeAreaView, StyleSheet, StatusBar, TouchableOpacity, Text, View } from 'react-native';
 import {NavigationContainer, useNavigation} from '@react-navigation/native'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import Icon from 'react-native-vector-icons/Ionicons'
@@ -7,7 +7,9 @@ import { Home } from './src/pages/Home';
 import { ProductsPage } from './src/pages/ProductsPage';
 import { CartPage } from './src/pages/CartPage';
 
-import { CartProvider } from './src/context/CartContext';
+import { CartProvider, useCart } from './src/context/CartContext';
+import { AuthProvider, useAuth } from './src/context/AuthContext';
+import { Login } from './src/pages/Login';
 
 
 const Drawer = createDrawerNavigator()
@@ -15,16 +17,20 @@ const Drawer = createDrawerNavigator()
 export default function App() {
   return (
     
-      <CartProvider>
-        <NavigationContainer>
-          <Navigation />
-        </NavigationContainer>
-      </CartProvider>
+      <AuthProvider>
+        <CartProvider>
+          <NavigationContainer>
+            <Navigation />
+          </NavigationContainer>
+        </CartProvider>
+      </AuthProvider>
 
   );
 }
 
 const Navigation = () => {
+
+  const { user } = useAuth()
 
   return (
     <>
@@ -43,24 +49,47 @@ const Navigation = () => {
         }}
       >
 
-      <Drawer.Screen name="Home" component={Home} />
+      <Drawer.Screen name="Home" component={Home} options={{headerRight: () => <View style={styles.row}><Icon name="person-circle-outline" size={28} color="#F5F5F5" style={styles.cart}/>{user ? <Text style={styles.headerText}>Logout</Text> : <Text style={styles.headerText}>Login</Text>}</View>}}/>
 
-      <Drawer.Screen name="Products" component={ProductsPage} options={{headerRight: () => <Icon name="cart-outline" size={28} color="#F5F5F5" style={styles.cart}/>}}/>
+      <Drawer.Screen name="Products" component={ProductsPage} options={{headerRight: () => <CartIconWithNavigation/>}}/>
 
       <Drawer.Screen name="Cart" component={CartPage} />
-    </Drawer.Navigator>
+    </Drawer.Navigator> 
     </>
   )
 }
 
+const CartIconWithNavigation = () => {
+  const navigation = useNavigation()
+  const { getTotalItems } = useCart()
+
+  return (
+    <TouchableOpacity
+      style={styles.row}
+      onPress={() => navigation.navigate('Cart')}
+    >
+      <Icon name="cart-outline" size={24} color="#F5F5F5"/>
+      <Text style={styles.cartCount}>{getTotalItems()}</Text>
+    </TouchableOpacity>
+  )
+}
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   cart:{
     marginRight: 10
-  }
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginRight: 20
+  },
+  headerText: {
+    color: '#F5F5F5'
+  },
+  cartCount: {
+    marginLeft: 4,
+    fontSize: 16,
+    color: '#F5F5F5',
+    fontWeight: 'bold',
+  },
 });

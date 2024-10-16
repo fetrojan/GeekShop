@@ -1,7 +1,7 @@
 import {useFocusEffect} from '@react-navigation/native'
 import axios from 'axios';
 import { useCart } from '../context/CartContext';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { FlatList, Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { Product } from '../types';
 import { globalStyles } from '../global/styles';
@@ -11,15 +11,17 @@ export function ProductsPage() {
     const { addItem } = useCart()
     const [items, setItems] = useState<Product[]>([])
  
-    useFocusEffect(() => {
-        axios.get('http://192.168.1.150:3000/products')
-        .then((response) => {
-            setItems(response.data)
-        })
-        .catch((error) => {
-            console.log('Não foi possível obter a lista de produtos', error)
-        })
-    })
+    useFocusEffect(
+        useCallback(() => {
+          axios.get('http://192.168.1.150:3000/products')
+            .then((response) => {
+              setItems(response.data)
+            })
+            .catch((error) => {
+              console.log('Não foi possível obter a lista de produtos', error)
+            });
+        }, [])
+      );
 
     function handleAddCart(item) {
         addItem(item)

@@ -19,7 +19,6 @@ export const CartProvider = ({children}: CartProviderProps) => {
     function removeItem(id: number) {
         setItems((prevItems) => prevItems.filter(item => item.id !== id))
     }
-
     function valorTotal() {
         const total = items.reduce((acc, product) => { return acc + product.price }, 0)
         return total

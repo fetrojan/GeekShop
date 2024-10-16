@@ -25,9 +25,7 @@ export function CartPage() {
                 return renderProduct(item)
             })}
             <Text style={globalStyles.buttonText}>Valor Total: {valorTotal()}</Text>
-            {/* <FlatList data={items} 
-                renderItem={renderProduct} 
-                keyExtractor={(item) => item.id} /> */}
+            
         </ScrollView>
     )
 }
