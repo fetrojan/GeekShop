@@ -2,7 +2,7 @@ import {useFocusEffect} from '@react-navigation/native'
 import axios from 'axios';
 import { useCart } from '../context/CartContext';
 import { useCallback, useState } from 'react';
-import { FlatList, Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { FlatList, Image, SafeAreaView, Text, TextInput, TouchableOpacity, View} from 'react-native'
 import { Product } from '../types';
 import { globalStyles } from '../global/styles';
 
@@ -11,11 +11,25 @@ export function ProductsPage() {
     const { addItem } = useCart()
     const [items, setItems] = useState<Product[]>([])
  
+    const [searchQuery, setSearchQuery] = useState('');
+    const [filteredProducts, setFilteredProducts] = useState([]);
+
+    const handleSearch = (query) => {
+      setSearchQuery(query)
+      if(query) {
+        const filteredData = items.filter((item) => item.name.toLowerCase().includes(query.toLowerCase()))
+        setFilteredProducts(filteredData)
+      } else {
+        setFilteredProducts(items)
+      }
+    }
+
     useFocusEffect(
         useCallback(() => {
           axios.get('http://192.168.1.150:3000/products')
             .then((response) => {
               setItems(response.data)
+              setFilteredProducts(response.data)
             })
             .catch((error) => {
               console.log('Não foi possível obter a lista de produtos', error)
@@ -31,8 +45,10 @@ export function ProductsPage() {
     return (
         <SafeAreaView style={globalStyles.container}>
 
+            <TextInput style={[globalStyles.input, {marginTop: 20, alignSelf:'center'}]} placeholder='Buscar produto...' value={searchQuery} onChangeText={handleSearch}/>
+
             <FlatList
-            data={items}
+            data={filteredProducts}
             renderItem={({item}) => (
                 <View style={globalStyles.card}>
                      <Image source={{ uri: item.image }} style={globalStyles.cardImage} />

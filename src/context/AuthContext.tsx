@@ -12,8 +12,9 @@ export const AuthProvider = ({children}: AuthProviderProps) => {
         setUser(fakeUser)
     }
 
-    function logout() {
+    function logout(navigation) {
         setUser(false)
+        navigation.navigate('Home')
     }
 
     return (

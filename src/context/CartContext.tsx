@@ -21,7 +21,7 @@ export const CartProvider = ({children}: CartProviderProps) => {
     }
     function valorTotal() {
         const total = items.reduce((acc, product) => { return acc + product.price }, 0)
-        return total
+        return total.toFixed(2)
     }
 
     function clearCart(){

@@ -11,6 +11,25 @@ export const globalStyles = StyleSheet.create({
         alignItems: 'center',
         padding: 20
     },
+    scrollContainer: {
+        flex: 1,
+        padding: 10,
+    },
+    containerCart: {
+        flex: 1,
+        justifyContent: 'space-between',
+        backgroundColor: "#070708",
+    },
+    cartContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 10,
+        padding: 10,
+        backgroundColor: '#2C2E43',
+        borderRadius: 5,
+        borderColor: '#FF4081',
+        borderWidth: 1,
+    },
     card: {
         backgroundColor: "#2C2E43",
         width: '85%',
@@ -95,5 +114,34 @@ export const globalStyles = StyleSheet.create({
         color: '#CCC',
         marginBottom: 30,
         textAlign: 'center',
+    },
+    footer: {
+        padding: 20,
+        borderTopWidth: 1,
+        alignItems: 'center',
+    },
+    totalText: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginBottom: 10,
+    },
+    checkoutButton: {
+        backgroundColor: '#4CAF50',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 5,
+    },
+    checkoutText: {
+        color: '#fff',
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
+    cartImage: {
+        width: 60, 
+        height: 60,
+        marginRight: 10,
+    },
+    cartDetails: {
+        flex: 1,
     },
 })

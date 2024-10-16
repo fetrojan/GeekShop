@@ -3,15 +3,20 @@ import { StyleSheet, TextInput, Text, SafeAreaView, TouchableOpacity } from "rea
 import { useAuth } from "../context/AuthContext"
 import { globalStyles } from "../global/styles"
 
-export const Login = () => {
+export const Login = ({navigation}) => {
 
     const { login } = useAuth()
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
+    function navigateToHome() {
+        navigation.navigate('Home')
+    }
+
     function handleLogin() {
         login(username, password)
+        navigateToHome()
     }
 
     return (

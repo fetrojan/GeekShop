@@ -49,11 +49,13 @@ const Navigation = () => {
         }}
       >
 
-      <Drawer.Screen name="Home" component={Home} options={{headerRight: () => <View style={styles.row}><Icon name="person-circle-outline" size={28} color="#F5F5F5" style={styles.cart}/>{user ? <Text style={styles.headerText}>Logout</Text> : <Text style={styles.headerText}>Login</Text>}</View>}}/>
+      <Drawer.Screen name="Home" component={Home} options={{headerRight: () => <UserIconWithNavigation />}}/>
 
       <Drawer.Screen name="Products" component={ProductsPage} options={{headerRight: () => <CartIconWithNavigation/>}}/>
 
       <Drawer.Screen name="Cart" component={CartPage} />
+
+      <Drawer.Screen name="Login" component={Login} />
     </Drawer.Navigator> 
     </>
   )
@@ -74,6 +76,29 @@ const CartIconWithNavigation = () => {
   )
 }
 
+const UserIconWithNavigation = () => {
+  const navigation = useNavigation()
+  const { user, logout } = useAuth()
+
+  const handlePress = () => {
+    if (user) {
+      logout(navigation)
+    } else {
+      navigation.navigate('Login')
+    }
+  }
+  
+  return (
+    <TouchableOpacity
+      style={styles.row}
+      onPress={handlePress}
+    >
+      <Icon name="person-circle-outline" size={24} color="#F5F5F5"/>
+      {user ? <Text style={styles.headerText}>Logout</Text> : <Text style={styles.headerText}>Login</Text>}
+    </TouchableOpacity>
+  )
+}
+
 const styles = StyleSheet.create({
   cart:{
     marginRight: 10
@@ -84,7 +109,8 @@ const styles = StyleSheet.create({
     marginRight: 20
   },
   headerText: {
-    color: '#F5F5F5'
+    color: '#F5F5F5',
+    marginLeft: 5
   },
   cartCount: {
     marginLeft: 4,

@@ -13,8 +13,6 @@ export function Home({navigation}:{navigation:NavigationProp<any>}) {
         navigation.navigate('Cart')
     }
 
-    
-
     return (
         <View style={globalStyles.containerLog}>
            
@@ -26,12 +24,12 @@ export function Home({navigation}:{navigation:NavigationProp<any>}) {
             <Text style={globalStyles.title}>Bem-vindo ao GeekShop!</Text>
             <Text style={globalStyles.subtitle}>A melhor loja para geeks</Text>
 
-            <TouchableOpacity style={globalStyles.buttonRow}>
+            <TouchableOpacity style={globalStyles.buttonRow} onPress={() => navigateToCart()}>
                 <Icon name="cart-outline" size={24} color="#FFF" />
                 <Text style={[globalStyles.buttonText, {marginLeft: 10}]}>Ver Carrinho</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={globalStyles.buttonRow}>
+            <TouchableOpacity style={globalStyles.buttonRow} onPress={() => navigateToProducts()}>
                 <Icon name="game-controller-outline" size={24} color="#FFF" />
                 <Text style={[globalStyles.buttonText, {marginLeft: 10}]}>Ver Produtos</Text>
             </TouchableOpacity>
